@@ -16,7 +16,7 @@
 using namespace std;
 
 //NOTE: you should have no mutexes in this file
-//TODO linker errors?  Did you include the pthread library?   And set the proper dialect?
+//TODONE linker errors?  Did you include the pthread library?   And set the proper dialect?
 //TODO declare globals
 vector<thread> vec;
 bool doWork = true;
@@ -31,16 +31,16 @@ bool doWork = true;
  */
 void fun(string info){
 	while (doWork) {
-		cout << "info:\t" << endl;
+		cout << "info:\t" << info << endl;
 	}
 }
 
 int main() {
 	
-	//TODO start as many threads as you have cores (see std::thread::hardware_concurrency())
+	//TODONE start as many threads as you have cores (see std::thread::hardware_concurrency())
 	unsigned int coreNum = thread::hardware_concurrency();
 
-	//TODO save these threads in a vector
+	//TODONE save these threads in a vector
 	for (unsigned int i=0; i<coreNum; i++) {
 		// Create the unique string
 		char character = 97 + i;
@@ -48,22 +48,17 @@ int main() {
 		for (int j=0; j<5; j++) {
 			str += character;
 		}
-		cout << "1st str:\t" << str << endl;
-		// Create the thread
-//		thread currentThread = thread(fun, str);
-//		// Add the thread
-//		vec.push_back(currentThread);
-
-		vec.push_back(thread(fun, "aaaaa"));
+//		cout << "1st str:\t" << str << endl;
+		vec.push_back(thread(fun, str));
 	}
 
-	//TODO let threads run a bit (5 seconds)
+	//TODONE let threads run a bit (5 seconds)
 	this_thread::sleep_for(chrono::milliseconds(5000));
 	
-	//TODO ask them all to stop
+	//TODONE ask them all to stop
 	doWork = false;
 	
-	//TODO wait for all threads to finish
+	//TODONE wait for all threads to finish
 	for (auto& t: vec) t.join();
 	
 	return 0;
