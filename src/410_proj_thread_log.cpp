@@ -20,6 +20,9 @@ using namespace std;
 //TODO declare globals
 vector<thread> vec;
 bool doWork = true;
+// Initialize Logger objects
+Logger cLog (LOG_CONSOLE);
+Logger fLog (LOG_FILE, FILENAME);
 
 /***
  * TODO log info to both file and console. You can do this with 2 Logger objects. 
@@ -31,12 +34,13 @@ bool doWork = true;
  */
 void fun(string info){
 	while (doWork) {
-		cout << "info:\t" << info << endl;
+		cLog.Log(info);
+		fLog.Log(info);
+//		cout << "info:\t" << info << endl;
 	}
 }
 
 int main() {
-	
 	//TODONE start as many threads as you have cores (see std::thread::hardware_concurrency())
 	unsigned int coreNum = thread::hardware_concurrency();
 
@@ -48,6 +52,7 @@ int main() {
 		for (int j=0; j<5; j++) {
 			str += character;
 		}
+		str += "\n";
 //		cout << "1st str:\t" << str << endl;
 		vec.push_back(thread(fun, str));
 	}
