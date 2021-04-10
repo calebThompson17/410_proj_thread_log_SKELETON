@@ -11,10 +11,10 @@
 #include <mutex>
 #include "../includes/constants.h"
 
-//TODO please implement Logger.cpp
-//TODO please make this class threadsafe
-//TODO please make all critical sections as small as possible
-//TODO please use lock_guards
+//TODONE please implement Logger.cpp
+//TODONE please make this class threadsafe
+//TODONE please make all critical sections as small as possible
+//TODONE please use lock_guards
 
 class Logger {
 public:

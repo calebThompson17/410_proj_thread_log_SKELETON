@@ -17,7 +17,7 @@ using namespace std;
 
 //NOTE: you should have no mutexes in this file
 //TODONE linker errors?  Did you include the pthread library?   And set the proper dialect?
-//TODO declare globals
+//TODONE declare globals
 vector<thread> vec;
 bool doWork = true;
 // Initialize Logger objects
@@ -25,10 +25,10 @@ Logger cLog (LOG_CONSOLE);
 Logger fLog (LOG_FILE, FILENAME);
 
 /***
- * TODO log info to both file and console. You can do this with 2 Logger objects. 
+ * TODONE log info to both file and console. You can do this with 2 Logger objects.
  * 		Note:  These logger objects cannot be local variables, they must be shared 
  * 		amongst the threads. (why?)
- * TODO this function should run until main (or another thread) asks it to quit
+ * TODONE this function should run until main (or another thread) asks it to quit
  * @param info  to log
  * returns void
  */
@@ -54,6 +54,7 @@ int main() {
 		}
 		str += "\n";
 //		cout << "1st str:\t" << str << endl;
+		// Start and add thread to vector
 		vec.push_back(thread(fun, str));
 	}
 
